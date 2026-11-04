@@ -1,0 +1,109 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Monster Tamer"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://scripts/core/event_bus.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=0
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+window/stretch/scale_mode="integer"
+
+[input]
+
+move_up={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":87), Object(InputEventKey,"physical_keycode":4194320)]
+}
+move_down={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":83), Object(InputEventKey,"physical_keycode":4194322)]
+}
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":65), Object(InputEventKey,"physical_keycode":4194319)]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":68), Object(InputEventKey,"physical_keycode":4194321)]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":69)]
+}
+switch_control={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":81)]
+}
+aim_throw={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"button_index":2)]
+}
+attack_aim={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"button_index":1)]
+}
+move_1={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":49)]
+}
+move_2={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":50)]
+}
+move_3={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":51)]
+}
+move_4={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":52)]
+}
+dash={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":32)]
+}
+team_menu={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":4194306)]
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

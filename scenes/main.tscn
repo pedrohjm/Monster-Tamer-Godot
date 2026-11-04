@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/camera_rig.gd" id="1_camera"]
+
+[node name="Main" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CameraRig" type="Camera2D" parent="."]
+script = ExtResource("1_camera")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="M0Label" type="Label" parent="HUD"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 31.0
+text = "Monster Tamer - M0 (setup)"

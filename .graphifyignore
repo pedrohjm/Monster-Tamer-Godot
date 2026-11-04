@@ -1,0 +1,7 @@
+.godot/
+.claude/
+.git/
+graphify-out/
+*.import
+*.uid
+icon.svg
