@@ -1,0 +1,77 @@
+# Região de selva 00 (48x34 células de 32 px). Editável à mão.
+# Depois de editar: Godot --headless --path . -s res://tools/build_region.gd
+#
+# Bloco 1, terreno:  ~ água funda   - água rasa   . areia   , terra   g grama   T mato alto
+#   P planalto   : terra no planalto   F penhasco   S escada (3 células)   C caverna (3 células)   = ponte sobre água
+# Bloco 2, props:    . nada   p q palmeiras   b figueira   r árvore   t barraca   c fogueira
+#   k barril   x caixote   s placa   l tronco   u arbusto   n samambaia   f flores   m cogumelos   o pedra   w parede pequena de pedra
+# A célula marcada com @ no bloco 2 é o ponto de partida (Spawn).
+gggg..-~~~-..ggggggggggFPPPPPPPPPPPPPPPPPPPPPPPF
+ggggg..-~~~-..gggggggggFPPPPPPPPPPPPPPPPPPPPPPPF
+gggggg..-~~~~-..gggggggFPPPPPPPPPPPPPPPPPPPPPFFF
+gggggggg.-~~~~-..ggggggFFFPPPPPPPPPPPPPPTTTPPFFF
+ggggggggg.-~~~~-...ggggFFFPPPPPPPPPP:PPPTTTTPFgg
+gggggggggg.-~~~~-....ggggFPPPPPPPP::::PPTTTPPFgg
+gggggggggg..-~~~-.....gggFFFPPPPP::::PPPPPPFFFgg
+ggggggggggg..-~~~-....gggFFFPPPPP::PPPPPPPPFFFgg
+gggggggggggg..-~~~-...gggggFPPPPP:PPPPPPPPPFgggg
+gggggggggggg..-~~~~-..gggggFFFFFSSSFFCCCFFFFgggg
+ggggTTTgggggg..-~~~-..gggggFFFFFSSSFFCCCFFFFgggg
+gTTTTTTgggggg..-~~~~-..ggggggggg,,gggggggggggggg
+gTTTTTTTgggggg..-~~~-..gggggggg,,,gggggggggggggg
+ggTTTTTggggggg..-~~~-..ggggggg,,,ggggggggggggggg
+gggTTgggggggggg.-~~~~-..ggggg,,,gggggggggggggggg
+ggggggggggggggg..-~~~-..gggg,,,ggggggggggggggggg
+gggggggggggggggg.-~~~~-..gg,,,gggggggggggggggggg
+gggggggggggggggg..,-~~-.,,,,,ggggggggggggggggggg
+ggggggggggggggg,,,,=====,,,,gggggggggggggggggggg
+gggggggggggggg,,,,,.-~~-,..ggggggggggggggggggggg
+ggggggggggggg,,,ggg.-~~~~-..ggggggggggTTTggggggg
+ggggggggggg,,,,ggggg.-~~~~-..gggggggTTTTTTTTgggg
+gggggggggg,,,gggggggg.-~~~~-..ggggggTTTTTTTTgggg
+ggggggggg,,,gggggggggg.-~~~~-..gggggTTTTTTTggggg
+gggggggg,,,gggggggggggg---~~~-..gggggTTTTTgggggg
+ggggggg,,,ggggggggggggg.---~~~-..ggggggggggggggg
+gggggg,,,ggggggggggggggg.---~~~-..gggggggggggggg
+ggggg,,,ggggggggggggggggg.---~~~-..ggggggggggggg
+gggg,,,ggggggggggggggggggg..--~~~~-.gggggggggggg
+ggg,,,ggggggggggggTTTTgggggg.--~~~~-.ggggggggggg
+ggg,,gggggggggggggTTTTTTggggg.--~~~~-.gggggggggg
+gg,,ggggggggggggggTTTTTggggggg..-~~~-..ggggggggg
+g,,,ggggggggggggggggggggggggggg..-~~~-..gggggggg
+,,,ggggggggggggggggggggggggggggg..-~~~-..ggggggg
+
+..q............q....f.w...u.n..n..f.r...n.......
+..........................................b.u...
+................n.n.f.....n.....................
+...b..q...............w........kx......r...n....
+.u.................q........n.....n.t.........w.
+....n.n.................w.....f.............u...
+..f......q............................c...u...w.
+r.......................w...u...........f.......
+..n...r...................w...f.f...f...........
+f........p.............u....................w...
+..r.........q...................................
+........f.f............q.....f.f...f....f.w.....
+n...........n..................................m
+.......................n.....n........n...n..u..
+m.r.......................p.....f...............
+.......r.u.m.p.......................n..r.......
+.f........................u...n.n.r..........r.u
+...f...........n.....................f.f.f......
+........r.........................n............n
+....r.......f...................f.....n.........
+.............@............s...q...u.r......f.r..
+.r.m......f.......q.............................
+........m......................n............n...
+n..u.f...........f...............f............f.
+............u.f......p.............q......f.....
+r..r.f...........r.............l......u......f..
+...........n..l........n..........u........f....
+...f.................q...............q.f.r....r.
+n.................f.............................
+.........r......r.......p..n............f....n.f
+...........f.n........................p.........
+n...n............f........u...............q..f.r
+.......r.f.....r.......n.....q..................
+....m..............r........................f.u.

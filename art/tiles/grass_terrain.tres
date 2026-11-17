@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DualGridTerrain" format=3]
+
+[ext_resource type="Script" path="res://scripts/world/dual_grid_terrain.gd" id="1_7qvmv"]
+[ext_resource type="TileSet" path="res://art/tiles/grass_tileset.tres" id="2_me5va"]
+
+[resource]
+script = ExtResource("1_7qvmv")
+display_name = "grama"
+logic_id = 1
+tile_set = ExtResource("2_me5va")
+variant_coords = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)])
+variant_weights = PackedFloat32Array(0.06, 0.06, 0.05, 0.02, 0.02, 0.02)

@@ -1,20 +1,25 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://cvkig1ca081gy"]
 
-[ext_resource type="Script" path="res://scripts/core/camera_rig.gd" id="1_camera"]
+[ext_resource type="Script" uid="uid://bxjp023lx4xts" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://kaidd7ljet3a" path="res://scripts/core/camera_rig.gd" id="2_camera"]
+[ext_resource type="PackedScene" path="res://scenes/world/region_grass_test.tscn" id="3_grass"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1011460233]
+script = ExtResource("1_main")
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=722745978]
 y_sort_enabled = true
 
-[node name="CameraRig" type="Camera2D" parent="."]
-script = ExtResource("1_camera")
+[node name="RegionGrassTest" parent="World" instance=ExtResource("3_grass")]
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="CameraRig" type="Camera2D" parent="." unique_id=259808705]
+script = ExtResource("2_camera")
 
-[node name="M0Label" type="Label" parent="HUD"]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=650232228]
+
+[node name="DebugLabel" type="Label" parent="HUD" unique_id=1976622510]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 320.0
+offset_right = 400.0
 offset_bottom = 31.0
-text = "Monster Tamer - M0 (setup)"
+text = "WASD: mover a camera (temporario ate o M1)"
