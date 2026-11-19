@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DualGridTerrain" format=3 uid="uid://dm66sxgixaxey"]
+
+[ext_resource type="Script" uid="uid://c2jeww0jlp3y4" path="res://scripts/world/dual_grid_terrain.gd" id="1_atakf"]
+[ext_resource type="TileSet" uid="uid://ccfhcmeyaccgw" path="res://art/tiles/water_tileset.tres" id="2_spchx"]
+
+[resource]
+script = ExtResource("1_atakf")
+display_name = "água"
+logic_id = 2
+tile_set = ExtResource("2_spchx")
+variant_weights = PackedFloat32Array()
+fill_coords = Vector2i(0, 0)
+fill_size = Vector2i(6, 5)
+face_clip_lookup = PackedByteArray()
+overlay_source_id = 4
+shallow_water_size = Vector2i(6, 5)

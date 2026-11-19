@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DualGridTerrain" format=3]
+
+[ext_resource type="Script" path="res://scripts/world/dual_grid_terrain.gd" id="1_6yqpq"]
+[ext_resource type="TileSet" path="res://art/tiles/stone_tileset.tres" id="2_iyqvy"]
+
+[resource]
+script = ExtResource("1_6yqpq")
+display_name = "pedra"
+logic_id = 3
+tile_set = ExtResource("2_iyqvy")
+variant_weights = PackedFloat32Array()

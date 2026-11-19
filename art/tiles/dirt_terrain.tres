@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DualGridTerrain" format=3 uid="uid://bsrjgng06hae7"]
+
+[ext_resource type="Script" uid="uid://c2jeww0jlp3y4" path="res://scripts/world/dual_grid_terrain.gd" id="1_377dd"]
+[ext_resource type="TileSet" uid="uid://ql1yec620d05" path="res://art/tiles/dirt_tileset.tres" id="2_hqhsd"]
+
+[resource]
+script = ExtResource("1_377dd")
+display_name = "terra"
+tile_set = ExtResource("2_hqhsd")
+atlas_repeat_size = Vector2i(8, 6)
+variant_weights = PackedFloat32Array()
+bank_source_id = 2
+bank_repeat_size = Vector2i(4, 3)
+bank_neighbor_logic_id = 2
+face_clip_lookup = PackedByteArray()
