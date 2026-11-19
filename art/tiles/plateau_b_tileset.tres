@@ -1,0 +1,83 @@
+[gd_resource type="TileSet" format=3 uid="uid://dh4g8bbvoo4ff"]
+
+[ext_resource type="Texture2D" uid="uid://1j4cadwf7230" path="res://art/tiles/cliff_grass_b.png" id="1_qp6hv"]
+[ext_resource type="Texture2D" uid="uid://oyb7ik35its3" path="res://art/tiles/plateau_b_rim.png" id="2_sbcj6"]
+[ext_resource type="Texture2D" uid="uid://de6fup0aau8ct" path="res://art/tiles/plateau_b_face.png" id="3_1ejdq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5b4x"]
+texture = ExtResource("1_qp6hv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b1dcj"]
+texture = ExtResource("2_sbcj6")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fij50"]
+texture = ExtResource("3_1ejdq")
+texture_region_size = Vector2i(32, 32)
+0:4/size_in_atlas = Vector2i(1, 2)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, -16)
+0:4/0/y_sort_origin = 44
+2:6/size_in_atlas = Vector2i(1, 2)
+2:6/0 = 0
+2:6/0/texture_origin = Vector2i(0, -16)
+2:6/0/y_sort_origin = 44
+3:6/size_in_atlas = Vector2i(1, 2)
+3:6/0 = 0
+3:6/0/texture_origin = Vector2i(0, -16)
+3:6/0/y_sort_origin = 45
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -16)
+0:2/0/y_sort_origin = 45
+1:4/size_in_atlas = Vector2i(1, 2)
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, -16)
+1:4/0/y_sort_origin = 45
+2:4/size_in_atlas = Vector2i(1, 2)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, -16)
+2:4/0/y_sort_origin = 45
+3:2/size_in_atlas = Vector2i(1, 2)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -16)
+3:2/0/y_sort_origin = 44
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_p5b4x")
+sources/2 = SubResource("TileSetAtlasSource_b1dcj")
+sources/3 = SubResource("TileSetAtlasSource_fij50")

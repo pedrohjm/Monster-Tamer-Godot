@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bxjp023lx4xts" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Script" uid="uid://kaidd7ljet3a" path="res://scripts/core/camera_rig.gd" id="2_camera"]
-[ext_resource type="PackedScene" path="res://scenes/world/region_grass_test.tscn" id="3_grass"]
+[ext_resource type="PackedScene" uid="uid://cn1p55k2ed4mf" path="res://scenes/world/region_grass_test.tscn" id="3_grass"]
+[ext_resource type="PackedScene" uid="uid://ckch73q5cf8ia" path="res://scenes/world/plateau_styles_test.tscn" id="4_styles"]
+[ext_resource type="PackedScene" path="res://scenes/world/relevo_test.tscn" id="5_relevo"]
+[ext_resource type="PackedScene" uid="uid://b2ww07f5o5h6b" path="res://scenes/world/mini_mountain.tscn" id="6_mountain"]
 
 [node name="Main" type="Node2D" unique_id=1011460233]
 script = ExtResource("1_main")
@@ -10,7 +13,16 @@ script = ExtResource("1_main")
 [node name="World" type="Node2D" parent="." unique_id=722745978]
 y_sort_enabled = true
 
-[node name="RegionGrassTest" parent="World" instance=ExtResource("3_grass")]
+[node name="MiniMountain" parent="World" unique_id=1625387978 instance=ExtResource("6_mountain")]
+position = Vector2(932, -6)
+
+[node name="RelevoTest" parent="World" unique_id=347340193 instance=ExtResource("5_relevo")]
+position = Vector2(934, 515)
+
+[node name="PlateauStylesTest" parent="World" unique_id=1708479980 instance=ExtResource("4_styles")]
+position = Vector2(0, 512)
+
+[node name="RegionGrassTest" parent="World" unique_id=100854698 instance=ExtResource("3_grass")]
 
 [node name="CameraRig" type="Camera2D" parent="." unique_id=259808705]
 script = ExtResource("2_camera")

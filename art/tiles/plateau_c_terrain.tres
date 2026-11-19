@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DualGridTerrain" format=3]
+
+[ext_resource type="Script" path="res://scripts/world/dual_grid_terrain.gd" id="1_5kodq"]
+[ext_resource type="TileSet" path="res://art/tiles/plateau_c_tileset.tres" id="2_pcyto"]
+
+[resource]
+script = ExtResource("1_5kodq")
+display_name = "planalto estilo C (blocos)"
+logic_id = 1
+tile_set = ExtResource("2_pcyto")
+variant_coords = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0)])
+variant_weights = PackedFloat32Array(0.04, 0.04, 0.03, 0.015, 0.015, 0.015, 0.04, 0.04, 0.025, 0.015)
+bank_source_id = 2
+face_source_id = 3
+face_variants = 2
+face_y_sort = true
+tint = Color(1.1, 1.1, 1.04, 1)

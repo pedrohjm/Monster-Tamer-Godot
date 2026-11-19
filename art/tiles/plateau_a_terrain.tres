@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DualGridTerrain" format=3]
+
+[ext_resource type="Script" path="res://scripts/world/dual_grid_terrain.gd" id="1_6uv65"]
+[ext_resource type="TileSet" path="res://art/tiles/plateau_a_tileset.tres" id="2_p4mnv"]
+
+[resource]
+script = ExtResource("1_6uv65")
+display_name = "planalto estilo A (cartela)"
+logic_id = 1
+tile_set = ExtResource("2_p4mnv")
+variant_weights = PackedFloat32Array()
+bank_source_id = 2
+face_source_id = 3
+face_variants = 4
+face_y_sort = true
