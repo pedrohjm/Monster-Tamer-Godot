@@ -43,3 +43,25 @@ func test_variant_rate_matches_weights() -> void:
 
 func test_no_weights_always_base() -> void:
 	assert_eq(DualGrid.pick_variant(Vector2i(3, 3), PackedFloat32Array()), -1)
+
+
+func test_fill_tile_repeats_block() -> void:
+	var size: Vector2i = Vector2i(2, 2)
+	assert_eq(DualGrid.fill_tile(Vector2i(0, 0), Vector2i.ZERO, size), Vector2i(0, 0))
+	assert_eq(DualGrid.fill_tile(Vector2i(3, 2), Vector2i.ZERO, size), Vector2i(1, 0))
+	assert_eq(DualGrid.fill_tile(Vector2i(-1, -3), Vector2i.ZERO, size), Vector2i(1, 1), "negativos também")
+
+
+func test_south_edge() -> void:
+	assert_true(DualGrid.has_south_edge(DualGrid.mask(true, true, false, false)), "topo cheio, baixo vazio")
+	assert_true(DualGrid.has_south_edge(DualGrid.mask(false, true, true, false)), "diagonal")
+	assert_true(not DualGrid.has_south_edge(DualGrid.FULL_MASK), "cheio")
+	assert_true(not DualGrid.has_south_edge(DualGrid.mask(false, false, true, true)), "borda norte")
+	assert_true(not DualGrid.has_south_edge(DualGrid.mask(true, false, true, false)), "borda leste")
+
+
+func test_face_coords_alternate_by_column() -> void:
+	var m: int = DualGrid.mask(true, true, false, false)  # atlas (1, 2)
+	assert_eq(DualGrid.face_coords(m, Vector2i(0, 5), 3, 2), Vector2i(1, 6))
+	assert_eq(DualGrid.face_coords(m, Vector2i(1, 5), 3, 2), Vector2i(5, 6))
+	assert_eq(DualGrid.face_coords(m, Vector2i(-1, 0), 3, 2), Vector2i(5, 6))

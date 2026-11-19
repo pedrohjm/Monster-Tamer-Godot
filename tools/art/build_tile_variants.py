@@ -1,39 +1,57 @@
-"""Gera variações do tile cheio de grama: art/tiles/grass_variants.png (uma fileira de 32x32).
+"""Gera variações do tile cheio de cada terreno: art/tiles/<terreno>_variants.png.
 
-    python tools/art/build_grass_variants.py
+    python tools/art/build_tile_variants.py            # todos
+    python tools/art/build_tile_variants.py dirt       # só um
 
-Parte do tile cheio de art/tiles/grass.png (coluna 2, linha 1 do atlas 4x4). Mantém uma
-moldura de RING px igual ao original, para emendar com qualquer vizinho, e refaz o miolo:
-  - "mistura": tira os enfeites (trevos, folhinhas) e espalha os mesmos enfeites em
-    outras posições, para a repetição do tile não formar grade;
-  - "flores": mistura + um punhado de florzinhas (GAME_DESIGN §8: trevo e florzinhas em
-    ~10–15% das células, no mesmo tom da base).
-A ordem das variações aqui é a ordem das colunas no PNG (usada em build_grass_tileset.gd).
+Parte do tile cheio do atlas 4x4 do terreno (coluna 2, linha 1). Mantém uma moldura de
+RING px igual ao original, para emendar com qualquer vizinho, e refaz o miolo:
+  - "mistura": tira os enfeites (trevos e folhinhas, pedrinhas) e espalha os mesmos
+    enfeites em outras posições, para a repetição do tile não formar grade;
+  - "flores" (grama): mistura + um punhado de florzinhas (GAME_DESIGN §8: trevo e
+    florzinhas em ~10–15% das células, no mesmo tom da base).
+A ordem das variações é a ordem das colunas no PNG; as chances de cada uma ficam em
+tools/build_terrain_tilesets.gd.
 """
 from __future__ import annotations
 
 import random
+import sys
 from pathlib import Path
 
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
-ATLAS = ROOT / "art/tiles/grass.png"
-OUT = ROOT / "art/tiles/grass_variants.png"
 T = 32
 FULL = (2, 1)
 RING = 2
 BASE_TOLERANCE = 9  # distância de cor até a qual o pixel conta como chão liso
 
-# (nome, semente, fração dos enfeites originais, flores: (cor, quantidade) ou None)
-VARIANTS = [
-    ("mistura_a", 11, 1.0, None),
-    ("mistura_b", 23, 1.2, None),
-    ("calma", 37, 0.5, None),
-    ("flores_brancas", 41, 0.8, ("branca", 4)),
-    ("flores_amarelas", 53, 0.8, ("amarela", 4)),
-    ("flores_rosas", 67, 0.8, ("rosa", 3)),
-]
+# Por terreno: variações (nome, semente, fração dos enfeites originais,
+# flores: (cor ou "mista", quantidade) ou None).
+TERRAINS = {
+    "grass": [
+        ("mistura_a", 11, 1.0, None),
+        ("mistura_b", 23, 1.2, None),
+        ("calma", 37, 0.5, None),
+        ("flores_brancas", 41, 0.8, ("branca", 4)),
+        ("flores_amarelas", 53, 0.8, ("amarela", 4)),
+        ("flores_rosas", 67, 0.8, ("rosa", 3)),
+        ("mistura_c", 71, 1.0, None),
+        ("mistura_d", 83, 0.9, None),
+        ("densa", 89, 1.6, None),
+        ("flores_mistas", 97, 0.7, ("mista", 5)),
+    ],
+    "dirt": [
+        ("mistura_a", 13, 1.0, None),
+        ("mistura_b", 29, 1.0, None),
+        ("calma", 31, 0.4, None),
+        ("pedregosa", 47, 1.8, None),
+        ("mistura_c", 59, 1.0, None),
+        ("mistura_d", 61, 1.1, None),
+        ("calma_b", 73, 0.3, None),
+        ("pedregosa_b", 79, 1.6, None),
+    ],
+}
 
 # pétala, sombra da pétala, miolo
 FLOWER_COLORS = {
@@ -49,7 +67,15 @@ def dist(a: tuple, b: tuple) -> int:
 
 
 def main() -> None:
-    atlas = Image.open(ATLAS).convert("RGBA")
+    names = sys.argv[1:] or list(TERRAINS)
+    for name in names:
+        build(name)
+
+
+def build(terrain: str) -> None:
+    variants = TERRAINS[terrain]
+    out_path = ROOT / f"art/tiles/{terrain}_variants.png"
+    atlas = Image.open(ROOT / f"art/tiles/{terrain}.png").convert("RGBA")
     full = atlas.crop((FULL[0] * T, FULL[1] * T, FULL[0] * T + T, FULL[1] * T + T))
     px = full.load()
     counts = sorted(full.getcolors(4096), reverse=True)
@@ -59,8 +85,8 @@ def main() -> None:
     is_deco = [[dist(px[x, y], base) > BASE_TOLERANCE for x in range(T)] for y in range(T)]
     stamps = extract_stamps(px, is_deco)
 
-    out = Image.new("RGBA", (T * len(VARIANTS), T))
-    for i, (name, seed, density, flowers) in enumerate(VARIANTS):
+    out = Image.new("RGBA", (T * len(variants), T))
+    for i, (name, seed, density, flowers) in enumerate(variants):
         rng = random.Random(seed)
         tile = full.copy()
         tp = tile.load()
@@ -81,11 +107,12 @@ def main() -> None:
         if flowers is not None:
             color, qty = flowers
             for _ in range(qty):
-                place(tp, occupied, flower_stamp(color, rng), rng)
+                c = rng.choice(sorted(FLOWER_COLORS)) if color == "mista" else color
+                place(tp, occupied, flower_stamp(c, rng), rng)
         out.paste(tile, (i * T, 0))
-        print(f"{i}: {name}")
-    out.save(OUT)
-    print(f"salvo em {OUT.relative_to(ROOT)} ({len(VARIANTS)} variações, {len(stamps)} enfeites encontrados)")
+        print(f"  {i}: {name}")
+    out.save(out_path)
+    print(f"salvo em {out_path.relative_to(ROOT)} ({len(variants)} variações, {len(stamps)} enfeites encontrados)")
 
 
 def extract_stamps(px, is_deco) -> list[dict]:

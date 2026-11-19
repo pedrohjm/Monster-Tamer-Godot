@@ -54,6 +54,29 @@ static func display_cells(cell: Vector2i) -> Array[Vector2i]:
 	return [cell, cell + Vector2i(1, 0), cell + Vector2i(0, 1), cell + Vector2i(1, 1)]
 
 
+## Se a máscara tem borda sul (um canto de cima cheio com o de baixo vazio), onde entra
+## o paredão de um planalto.
+static func has_south_edge(corner_mask: int) -> bool:
+	var tl: bool = corner_mask & TL != 0
+	var tr: bool = corner_mask & TR != 0
+	var bl: bool = corner_mask & BL != 0
+	var br: bool = corner_mask & BR != 0
+	return (tl and not bl) or (tr and not br)
+
+
+## Coordenada do tile alto de paredão: layout do atlas com a linha multiplicada por
+## `rows` e `variants` cópias lado a lado, alternadas pela coluna do tile visual.
+static func face_coords(corner_mask: int, display: Vector2i, rows: int, variants: int) -> Vector2i:
+	var a: Vector2i = atlas_coords(corner_mask)
+	return Vector2i(a.x + 4 * posmod(display.x, maxi(variants, 1)), a.y * rows)
+
+
+## Tile de um preenchimento sem bordas que repete um bloco de `size` tiles a partir de
+## `base` no atlas (ex.: água com padrão de 2x2 tiles).
+static func fill_tile(display: Vector2i, base: Vector2i, size: Vector2i) -> Vector2i:
+	return base + Vector2i(posmod(display.x, maxi(size.x, 1)), posmod(display.y, maxi(size.y, 1)))
+
+
 ## Escolhe uma variação para o tile cheio de forma estável pela posição (o mapa não
 ## muda ao reabrir). Devolve -1 para o tile base ou o índice em `weights`, onde cada
 ## peso é a chance (0..1) daquela variação; a soma deve ficar abaixo de 1.

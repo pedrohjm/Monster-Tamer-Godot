@@ -10,3 +10,6 @@ graphify-out/
 
 # Python
 __pycache__/
+
+# Pacotes de exemplo de terceiros (licença não permite redistribuir os originais)
+art/examples/

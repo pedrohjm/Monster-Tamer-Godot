@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" format=3]
+[gd_resource type="TileSet" format=3 uid="uid://bgthbvlw1rqxu"]
 
 [ext_resource type="Texture2D" path="res://art/tiles/terrain_logic.png" id="1_u6glw"]
 
@@ -7,6 +7,12 @@ texture = ExtResource("1_u6glw")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
